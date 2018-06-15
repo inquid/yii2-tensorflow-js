@@ -1,0 +1,21 @@
+{
+    "name": "inquid/yii2-tensorflow-js",
+    "description": "Widgets and useful stuff to use tensorflow js on Yii2",
+    "type": "yii2-extension",
+    "keywords": ["yii2","extension","machine learning","js","tensorflow","tensorflow js","google"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Inquid Inc",
+            "email": "contact@inquid.co"
+        }
+    ],
+    "require": {
+        "yiisoft/yii2": "~2.0.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "inquid\\tensoflowjs\\": "src"
+        }
+    }
+}
