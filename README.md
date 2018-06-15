@@ -1,6 +1,7 @@
 Tensorflow JS Yii2 integration
 ==============================
 Widgets and useful stuff to use tensorflow js on Yii2
+![alt text](https://raw.githubusercontent.com/inquid/yii2-tensorflow-js/master/src/images/logo.png)
 
 Installation
 ------------
