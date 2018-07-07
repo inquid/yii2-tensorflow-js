@@ -10,9 +10,20 @@ namespace app\components;
 
 
 use yii\base\Widget;
+use yii\helpers\Json;
 
 class TensorflowWidget extends widget
 {
+    public $x1 = [1, 2, 3, 4];
+    public $x2 = [1, 3, 5, 7];
+    public $y1 = [4, 1];
+    public $y2 = [4, 1];
+    public $epochs = 10;
+    public $testDataX = [5];
+    public $testDataY = [1, 1];
+    public $units = 1;
+    public $inputShape = [1];
+
     public function init()
     {
         TensorflowAssets::register($this->view);
@@ -22,8 +33,8 @@ class TensorflowWidget extends widget
       // Define a model for linear regression.
       const model = tf.sequential();
       model.add(tf.layers.dense({
-        units: 1,
-        inputShape: [1]
+        units: ' . $this->epochs . ',
+        inputShape: ' . Json::encode($this->inputShape) . '
       }));
 
       // Prepare the model for training: Specify the loss and the optimizer.
@@ -33,8 +44,8 @@ class TensorflowWidget extends widget
       });
 
       // Generate some synthetic data for training.
-      const xs = tf.tensor2d([1, 2, 3, 4], [4, 1]);
-      const ys = tf.tensor2d([1, 3, 5, 7], [4, 1]);
+      const xs = tf.tensor2d(' . Json::encode($this->x1) . ', ' . Json::encode($this->y1) . ');
+      const ys = tf.tensor2d(' . Json::encode($this->x2) . ', ' . Json::encode($this->y2) . ');
 
       //Show training data
       $("#xs").append(xs.toString());
@@ -42,11 +53,11 @@ class TensorflowWidget extends widget
 
       // Train the model using the data.
       model.fit(xs, ys, {
-        epochs: 10
+        epochs: ' . $this->epochs . '
       }).then(() => {
         // Use the model to do inference on a data point the model hasn\'t seen before:
         // Open the browser devtools to see the output
-        test = tf.tensor2d([5], [1, 1]);
+        test = tf.tensor2d(' . Json::encode($this->testDataX) . ', ' . Json::encode($this->testDataY) . ');
         $("#test").append(test.toString());
         model.predict(test).print();
         $("#prediction").append(model.predict(test).toString());
@@ -67,12 +78,6 @@ class TensorflowWidget extends widget
                 </div>
                 <div id="prediction">
                   Prediction:
-                </div>
-                <div class="logo">
-                  <div class="cube1"></div>
-                  <div class="cube2"></div>
-                  <div class="cube3"></div>
-                  <div class="cube4"></div>
                 </div>';
     }
 }
