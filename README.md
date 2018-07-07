@@ -29,4 +29,4 @@ Usage
 Once the extension is installed, simply use it in your code by  :
 
 ```php
-<?= \inquid\tensoflowjs\TensorflowWidget::widget(); ?>```
+<?= \inquid\tensoflowjs\TensorflowWidget::widget(['x1'=>[1, 2, 3, 4],'x2'=>[1, 3, 5, 7],'y1'=>[4,1],'y2'=>[4,1],'epochs'=>11]); ?>```
