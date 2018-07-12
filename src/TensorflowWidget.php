@@ -25,7 +25,6 @@ class TensorflowWidget extends widget
     public $inputShape = [1];
     public $loss;
     public $optimizer;
-    public $inputShape;
 
     public function init()
     {
