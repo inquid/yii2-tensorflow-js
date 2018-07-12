@@ -6,7 +6,7 @@
  * Time: 12:19 AM
  */
 
-namespace app\components;
+namespace inquid\tensorflowjs;
 
 
 use yii\base\Widget;
@@ -23,10 +23,13 @@ class TensorflowWidget extends widget
     public $testDataY = [1, 1];
     public $units = 1;
     public $inputShape = [1];
+    public $loss;
+    public $optimizer;
+    public $inputShape;
 
     public function init()
     {
-        TensorflowAssets::register($this->view);
+        \inquid\tensorflowjs\TensorflowAssets::register($this->view);
         $this->view->registerJs('      // Notice there is no \'import\' statement. \'tf\' is available on the index-page
       // because of the script tag above.
 
@@ -39,8 +42,8 @@ class TensorflowWidget extends widget
 
       // Prepare the model for training: Specify the loss and the optimizer.
       model.compile({
-        loss: \'meanSquaredError\',
-        optimizer: \'sgd\'
+        loss: \''.$loss.'\'
+        optimizer: \''.$optimizer.'\'
       });
 
       // Generate some synthetic data for training.
