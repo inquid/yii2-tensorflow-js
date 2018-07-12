@@ -23,8 +23,8 @@ class TensorflowWidget extends widget
     public $testDataY = [1, 1];
     public $units = 1;
     public $inputShape = [1];
-    public $loss;
-    public $optimizer;
+    public $loss="meanSquaredError";
+    public $optimizer="sgd";
 
     public function init()
     {
@@ -41,8 +41,8 @@ class TensorflowWidget extends widget
 
       // Prepare the model for training: Specify the loss and the optimizer.
       model.compile({
-        loss: \''.$loss.'\'
-        optimizer: \''.$optimizer.'\'
+        loss: \''.$this->loss.'\'
+        optimizer: \''.$this->optimizer.'\'
       });
 
       // Generate some synthetic data for training.
