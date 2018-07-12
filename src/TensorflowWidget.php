@@ -41,7 +41,7 @@ class TensorflowWidget extends widget
 
       // Prepare the model for training: Specify the loss and the optimizer.
       model.compile({
-        loss: \''.$this->loss.'\'
+        loss: \''.$this->loss.'\',
         optimizer: \''.$this->optimizer.'\'
       });
 
