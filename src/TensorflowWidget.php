@@ -35,7 +35,7 @@ class TensorflowWidget extends widget
       // Define a model for linear regression.
       const model = tf.sequential();
       model.add(tf.layers.dense({
-        units: ' . $this->epochs . ',
+        units: ' . $this->units . ',
         inputShape: ' . Json::encode($this->inputShape) . '
       }));
 
